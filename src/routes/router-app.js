@@ -1,12 +1,11 @@
 const router = require('express').Router();
-const appController = require('../controllers/controller-app');
+const homeController = require('../controllers').home;
+const profileController = require('../controllers').profile;
 const verifyUser = require('../configs/verify');
+const controllerContact = require('../controllers/controller-contact');
 
-router.get('/', verifyUser.isLogin, appController.getApp);
-router.get('/add', verifyUser.isLogin, appController.formApp);
-router.post('/save', verifyUser.isLogin, appController.saveApp);
-router.get('/edit/:id', verifyUser.isLogin, appController.editApp);
-router.post('/update/:id', verifyUser.isLogin, appController.updateApp);
-router.get('/delete/:id', verifyUser.isLogin, appController.deleteApp);
+router.get('/', verifyUser.isLogin, homeController.home);
+router.get('/contact', verifyUser.isLogin, controllerContact.getContact);
+router.get('/profile', verifyUser.isLogin, profileController.profile);
 
 module.exports = router;

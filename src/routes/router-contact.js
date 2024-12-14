@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const contactController = require('../controllers/controller-contact');
+const contactController = require('../controllers').contact;
 const verifyUser = require('../configs/verify');
 
-router.get('/', verifyUser.isLogin, contactController.getContacts);
+router.get('/', verifyUser.isLogin, contactController.getContact);
 router.get('/add', verifyUser.isLogin, contactController.formContact);
 router.post('/save', verifyUser.isLogin, contactController.saveContact);
 router.get('/edit/:id', verifyUser.isLogin, contactController.editContact);
